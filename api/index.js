@@ -7,12 +7,7 @@ const FOX_URL = 'https://www.foxnews.com/';
 
 const getTimestamp = date => {
 	const o_date = new Intl.DateTimeFormat('en-US').format(date);
-	o_date.replace('/', '-');
 	return o_date.replace(/\//g, '-');
-
-	// const f_date = (m_ca, m_it) => Object({ ...m_ca, [m_it.type]: m_it.value });
-	// const m_date = o_date.formatToParts().reduce(f_date, {});
-	// return m_date.day + '-' + m_date.month + '-' + m_date.year;
 };
 
 const parseCnnHTML = html => {
@@ -87,6 +82,13 @@ const scrape = async () => {
 
 	const timestamp = getTimestamp(new Date());
 
+	console.log('pushing', {
+		cnnHeadlines,
+		foxHeadlines,
+		cnnImg: cnn.img,
+		foxImg: fox.img,
+		timestamp,
+	});
 	db.ref('/').push({
 		cnnHeadlines,
 		foxHeadlines,
@@ -94,6 +96,8 @@ const scrape = async () => {
 		foxImg: fox.img,
 		timestamp,
 	});
+
+	// db.ref('/').set({ mostRecentTimeStamp: timestamp });
 
 	return {
 		cnnHeadlines,
@@ -105,7 +109,7 @@ const scrape = async () => {
 };
 
 const getHeadlinesForDate = async date => {
-	const timestamp = getTimestamp(date);
+	// const timestamp = getTimestamp(date);
 
 	return await db
 		.ref('/')
@@ -114,7 +118,7 @@ const getHeadlinesForDate = async date => {
 			let headlines;
 			snapshot.forEach(_data => {
 				const data = _data.val();
-				if (data.timestamp === timestamp) {
+				if (data.timestamp === date) {
 					headlines = data;
 				}
 			});

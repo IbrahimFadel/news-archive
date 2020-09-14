@@ -17,8 +17,8 @@ app.use('/', indexRouter);
 app.use('/api/scrape', scrapeRouter);
 app.use('/api/headlines', headlinesFromDateRouter);
 
-app.use(function (req, res, next) {
-	next(createError(404));
-});
+// app.use(function (req, res, next) {
+// 	next(createError(404));
+// });
 
 module.exports = app;

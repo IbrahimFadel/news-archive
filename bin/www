@@ -9,6 +9,7 @@ var debug = require('debug')('ibrahimfadel.com:server');
 var http = require('http');
 const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 const { scrape } = require('../api');
+const { db } = require('../api/firebase');
 
 /**
  * Get port from environment and store in Express.
@@ -86,16 +87,23 @@ function onListening() {
 	var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
 	debug('Listening on ' + bind);
 
-	let lastDate = new Intl.DateTimeFormat('en-US').format(new Date());
-	setInterval(() => {
+	// let lastDate = new Intl.DateTimeFormat('en-US').format(new Date());
+	setInterval(async () => {
 		const date = new Intl.DateTimeFormat('en-US').format(new Date());
+		const lastDate = await db.ref('/').once('value', snapshot => {
+			snapshot.forEach(children => {
+				// console.log(children.val());
+			});
+			// console.log(snapshot.val());
+			// console.log(snapshot.child('mostRecentTimestamp'));
+		});
 
-		console.log(lastDate, date);
+		// console.log(lastDate, date);
 
-		if (date != lastDate) {
-			scrape();
-		}
+		// if (date != lastDate) {
+		// 	scrape();
+		// }
 
-		lastDate = date;
+		// lastDate = date;
 	}, 1000);
 }
