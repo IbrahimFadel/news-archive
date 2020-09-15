@@ -1,1 +1,1 @@
-0 0 * * * /usr/local/bin/node npm run scrape
+0 0 * * * npm run scrape
