@@ -1,0 +1,5 @@
+version: 1
+cron:
+  - name: 'scrape'
+    url: '/scheduled'
+    schedule: '0 0 * * *'

@@ -1,5 +1,7 @@
 const getHeadlines = async () => {
-	const res = await fetch(`/api/headlines/9-14-2020`);
+	const d = new Date();
+	const date = `${d.getMonth() + 1}-${d.getDate()}-${d.getUTCFullYear()}`;
+	const res = await fetch(`/api/headlines/${date}`);
 	const data = await res.json();
 	return data;
 };
