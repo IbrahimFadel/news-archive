@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+		title=title
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/css/index.css')
+		script(src='/js/index.js')
+	body
+		section#content
+			h1#title Headlines from #{date}
+
+			img#cnn-img
+
+			article#cnn-headlines
+
+			img#fox-img
+
+			article#fox-headlines
+
+			script.
+				date="#{date}"
+				main(date);

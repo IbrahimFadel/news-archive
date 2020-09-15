@@ -1,13 +1,15 @@
-const getHeadlines = async () => {
-	const d = new Date();
-	const date = `${d.getMonth() + 1}-${d.getDate()}-${d.getUTCFullYear()}`;
+const getHeadlines = async date => {
+	// const d = new Date();
+	// const date = `${d.getMonth() + 1}-${d.getDate()}-${d.getUTCFullYear()}`;
+	// const res = await fetch(`/api/headlines/${date}`);
 	const res = await fetch(`/api/headlines/${date}`);
 	const data = await res.json();
 	return data;
 };
 
-(async () => {
-	const headlines = await getHeadlines();
+const main = async date => {
+	console.log(date);
+	const headlines = await getHeadlines(date);
 
 	document.getElementById(
 		'cnn-img',
@@ -29,4 +31,4 @@ const getHeadlines = async () => {
 		pTag.innerHTML = headline;
 		document.getElementById('fox-headlines').appendChild(pTag);
 	});
-})();
+};

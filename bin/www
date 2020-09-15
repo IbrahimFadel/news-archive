@@ -5,7 +5,6 @@
  */
 
 var app = require('../index');
-var debug = require('debug')('ibrahimfadel.com:server');
 var http = require('http');
 const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 const { scrape } = require('../api');
@@ -85,18 +84,18 @@ function onError(error) {
 function onListening() {
 	var addr = server.address();
 	var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-	debug('Listening on ' + bind);
+	console.log('Listening on ' + bind);
 
-	let lastDate = new Intl.DateTimeFormat('en-US').format(new Date());
-	setInterval(() => {
-		const date = new Intl.DateTimeFormat('en-US').format(new Date());
+	// let lastDate = new Intl.DateTimeFormat('en-US').format(new Date());
+	// setInterval(() => {
+	// 	const date = new Intl.DateTimeFormat('en-US').format(new Date());
 
-		console.log(lastDate, date);
+	// 	// console.log(lastDate, date);
 
-		if (date != lastDate) {
-			scrape();
-		}
+	// 	if (date != lastDate) {
+	// 		scrape();
+	// 	}
 
-		lastDate = date;
-	}, 1000);
+	// 	lastDate = date;
+	// }, 1000);
 }
