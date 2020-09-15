@@ -87,20 +87,16 @@ function onListening() {
 	var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
 	debug('Listening on ' + bind);
 
-	// setInterval(async () => {
-	// 	const lastDate = await db.ref('/').once('value', snapshot => {
-	// 		snapshot.forEach(children => {
-	// 			console.log(children.val());
-	// 			const timestamp = children.val().timestamp;
-	// 			if (typeof timestamp === 'string') {
-	// 				const [month, day, year] = timestamp.split('-');
-	// 				const t = new Date(`${year}-${month}-${day}`);
-	// 				// if (t < new Date()) {
-	// 				}
-	// 			}
-	// 		});
-	// 		// console.log(snapshot.val());
-	// 		// console.log(snapshot.child('mostRecentTimestamp'));
-	// 	});
-	// }, 1000);
+	let lastDate = new Intl.DateTimeFormat('en-US').format(new Date());
+	setInterval(() => {
+		const date = new Intl.DateTimeFormat('en-US').format(new Date());
+
+		console.log(lastDate, date);
+
+		if (date != lastDate) {
+			scrape();
+		}
+
+		lastDate = date;
+	}, 1000);
 }
