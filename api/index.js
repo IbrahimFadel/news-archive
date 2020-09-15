@@ -82,13 +82,6 @@ const scrape = async () => {
 
 	const timestamp = getTimestamp(new Date());
 
-	console.log('pushing', {
-		cnnHeadlines,
-		foxHeadlines,
-		cnnImg: cnn.img,
-		foxImg: fox.img,
-		timestamp,
-	});
 	db.ref('/').push({
 		cnnHeadlines,
 		foxHeadlines,
@@ -97,7 +90,9 @@ const scrape = async () => {
 		timestamp,
 	});
 
-	// db.ref('/').set({ mostRecentTimeStamp: timestamp });
+	db.ref('/').update({
+		lastTimestamp: timestamp,
+	});
 
 	return {
 		cnnHeadlines,

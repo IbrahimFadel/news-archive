@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+const scheduler = require('node-schedule');
+const { scrape } = require('../api/index');
+
+scheduler.scheduleJob('0 0 * * *', async () => {
+	console.log('Beginning scrape');
+	const data = await scrape();
+	console.log('Scraped', data);
+});

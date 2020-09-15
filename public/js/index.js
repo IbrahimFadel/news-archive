@@ -1,5 +1,4 @@
 const getHeadlines = async () => {
-	// console.log(new Date());
 	const res = await fetch(`/api/headlines/9-14-2020`);
 	const data = await res.json();
 	return data;
