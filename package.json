@@ -1,29 +1,26 @@
 {
-	"name": "news_archive",
+	"dependencies": {
+		"firebase": "^8.6.8"
+	},
+	"name": "news-archive",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"devDependencies": {},
 	"scripts": {
-		"start": "node bin/www",
-		"scrape": "node bin/scrape",
-		"dev": "nodemon"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"deploy": "export GOOGLE_APPLICATION_CREDENTIALS='./functions/serviceAccountKey.json' firebase deploy",
+		"deploy:web": "firebase deploy --only hosting",
+		"deploy:api": "firebase deploy --only functions"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/IbrahimFadel/news-archive.git"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"dependencies": {
-		"cheerio": "^1.0.0-rc.3",
-		"express": "^4.17.1",
-		"firebase": "^7.20.0",
-		"firebase-admin": "^9.1.1",
-		"http-errors": "^1.8.0",
-		"morgan": "^1.10.0",
-		"node-schedule": "^1.3.2",
-		"pug": "^3.0.0",
-		"puppeteer": "^5.3.0"
+	"bugs": {
+		"url": "https://github.com/IbrahimFadel/news-archive/issues"
 	},
-	"devDependencies": {},
-	"engines": {
-		"node": "10.16.0"
-	}
+	"homepage": "https://github.com/IbrahimFadel/news-archive#readme",
+	"description": ""
 }

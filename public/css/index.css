@@ -1,56 +1,14 @@
-#content {
+* {
+	margin: 0;
+	font-family: Lato;
+}
+
+h1 {
+	font-family: Merriweather;
+}
+
+main {
 	display: grid;
-	grid-template-columns: 50vw 50vw;
-	grid-template-rows: 15% 1fr;
-	width: 100vw;
-}
-
-#title {
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-row-start: 1;
-	grid-row-end: 2;
-	text-align: center;
-}
-
-#cnn-img {
-	grid-column-start: 1;
-	grid-column-end: 2;
-	max-width: 100%;
-	max-height: 100%;
-	justify-self: center;
-}
-
-#fox-img {
-	grid-column-start: 2;
-	grid-column-end: 3;
-	max-width: 100%;
-	max-height: 100%;
-	justify-self: center;
-}
-
-#cnn-headlines {
-	grid-column-start: 1;
-	grid-column-end: 2;
-	grid-row-start: 2;
-	grid-row-start: 3;
-	padding: 5%;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	row-gap: 15px;
-}
-
-#fox-headlines {
-	grid-column-start: 2;
-	grid-column-end: 3;
-	grid-row-start: 2;
-	grid-row-start: 3;
-	padding: 5%;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	row-gap: 15px;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr;
 }
